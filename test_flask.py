@@ -28,5 +28,13 @@ def top_headlines():
                       'date': article['publishedAt']})
     return jsonify(array)
 
+
+@app.route('/level', methods=['GET'])
+def level(country_code):
+    country = request.args.get('country')
+    with open("levels_cc.pickle", "rb") as handle:
+        levels = pickle.load(handle)
+    return levels[country]
+
 if __name__ == '__main__':
     app.run()
