@@ -36,5 +36,13 @@ def level(country_code):
         levels = pickle.load(handle)
     return levels[country]
 
+
+@app.route('/description/<country_code>')
+def description(country_code):
+	with open("scrapping_texts.pickle", "rb") as handle:
+        texts = pickle.load(handle)
+    return texts[country_code]
+	
+	
 if __name__ == '__main__':
     app.run()
