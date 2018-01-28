@@ -35,6 +35,3 @@ def level(country_code):
     with open("levels_cc.pickle", "rb") as handle:
         levels = pickle.load(handle)
     return levels[country]
-
-if __name__ == '__main__':
-    app.run()
