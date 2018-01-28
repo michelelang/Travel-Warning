@@ -122,10 +122,15 @@ countries_object = {'Canada': 'CA', 'Sao Tome and Principe': 'ST', 'Venezuela, B
           this.setOptions({fillOpacity: 0});
         });
         google.maps.event.addListener(country, 'click', function() {
-            //add url and country code. country:this.name ,country code: countries_object[this.name]
             var lower_id = (countries_object[this.name]).toLowerCase();
-            console.log(lower_id);
-            console.log(countries_object[this.name]);
+            console.log("hello")
+            let result = $.get("http://localhost:5000/topheadlines?country="+lower_id+"&limit=5", function(){
+                alert("success");
+            });
+            console.log(result);
+            //console.log(countries_object[this.name]);
+           
+
         });
 
         country.setMap(map);

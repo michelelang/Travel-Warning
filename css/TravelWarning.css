@@ -1,4 +1,15 @@
+body {
+    background-image: url('../images/space2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
 #map-canvas {
     height: 600px;
     width: 800px;
+    margin-left: 21.5%;
+    margin-top: 5%;
+    margin-bottom: 2.5%;
+    border: 1px solid rgb(118, 146, 201);
   }
