@@ -1,10 +1,12 @@
 import sqlite3
 from newsapi import NewsApiClient
 import time
+from googletrans import Translator
 
 DB_NAME = 'COUNTRY_ARTICLES'
 REFRESH_DELTA = 15
 newsapi = NewsApiClient(api_key='e909980486c4469cb3d372750f9933ae')
+translator = Translator()
 
 
 def read_country_table():
@@ -29,9 +31,9 @@ def insert_articles(cursor, country):
     for i in range(20):
         article = articles[i]
         cursor.execute("INSERT INTO articles VALUES (?,?,?,?,?,?,?)",
-                       (article['title'],
+                       (translator.translate(article['title']).text,
                         article['source']['name'],
-                        article['description'],
+                        translator.translate(article['description']).text,
                         article['url'],
                         article['publishedAt'],
                         time.time(),
