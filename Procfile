@@ -1,1 +1,2 @@
-web: python ./TravelWarnings.py
+web: python ./test_flask.py
+

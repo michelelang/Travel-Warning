@@ -29,13 +29,71 @@
 <body>
 
 	<div id="map-canvas"></div>
+
+			<!-- Trigger the modal with a button -->
+		<button id="hidden-button" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display: none">Open Modal</button>
+
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 id="modal-title" class="modal-title">Modal Header</h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-body">Some text in the modal.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+			</div>
+
+		</div>
+		</div>
+
+	<!-- <div class="w3-container">
+
+			<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Country</button>
+			
+			<div id="id01" class="w3-modal">
+			 <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+			  <header class="w3-container w3-blue"> 
+			   <span onclick="document.getElementById('id01').style.display='none'" 
+			   class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+			   <h2>Country Crime Information</h2>
+			  </header>
+			
+			  <div class="w3-bar w3-border-bottom">
+			   <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'TravelWarning')">Travel Warnings</button>
+			   <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'NewsFeed')">Crime News Feed</button>
+			  </div>
+			
+			  <div id="TravelWarning" class="w3-container city">
+			   <h1>Travel Warnings</h1>
+			   <p>import data</p>
+			   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			  </div>
+			
+			  <div id="NewsFeed" class="w3-container city">
+			   <h1>Crime News Feed</h1>
+			   <p>import data</p>
+			   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			  </div>
+			
+			  <div class="w3-container w3-light-grey w3-padding">
+			   <button class="w3-button w3-right w3-white w3-border" 
+			   onclick="document.getElementById('id01').style.display='none'">Close</button>
+			  </div>
+			 </div>
+			</div>
+			
+			</div> -->
 	
 	<script src="js/TravelWarning.js"></script>
 
-
-	<!-- <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL8usVUod1NvhC27fK1ZHjVw4c4PVBGvo&callback=initMap">
-  </script>  -->
 
   
 </body>
