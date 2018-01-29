@@ -37,6 +37,6 @@ def top_headlines():
 @app.route('/level', methods=['GET'])
 def level():
     country = request.args.get('country')
-    with open("levels_cc.pickle", "rb") as handle:
-        levels = pickle.load(handle)
-    return levels[country]
+    #with open("levels_cc.pickle", "rb") as handle:
+    #    levels = pickle.load(handle)
+    return 'hella'#levels[country]
