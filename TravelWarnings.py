@@ -3,15 +3,10 @@ from flask import request
 from flask import jsonify
 from flask import render_template
 from newsapi import NewsApiClient
-import pickle
+import flask
 
 app = Flask(__name__)
 newsapi = NewsApiClient(api_key='e909980486c4469cb3d372750f9933ae')
-
-
-@app.route('/')
-def hello():
-    return 'hello'
 
 
 @app.route('/topheadlines', methods=['GET'])
@@ -40,3 +35,6 @@ def level(country_code):
     with open("levels_cc.pickle", "rb") as handle:
         levels = pickle.load(handle)
     return levels[country]
+
+if __name__ == '__main__':
+    app.run()
