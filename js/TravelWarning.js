@@ -125,19 +125,45 @@ countries_object = {'Canada': 'CA', 'Sao Tome and Principe': 'ST', 'Venezuela, B
             let countryName = this.name;
             var lower_id = (countries_object[this.name]).toLowerCase();
             // let result;
-            $.get("https://floating-woodland-60212.herokuapp.com/topheadlines?country="+lower_id+"&limit=5", function(data){
+            let dataTravel;
+
+   
+            // $.when($.get("https://floating-woodland-60212.herokuapp.com/level?country="+lower_id),
+            //        $.get("https://floating-woodland-60212.herokuapp.com/topheadlines?country="+lower_id+"&limit=2")).done(function(data1, data2){
+            //             /*a1 and a2 are arguments resolved for the page1 and page2 ajax requests, respectively.
+            //             Each argument is an array with the following structure: [ data, statusText, jqXHR ]*/
+            //             //var data = a1[0] + a2[0]; // a1[ 0 ] = "Whip", a2[ 0 ] = " It"
+            //             let modalTravelWarning = data1[0];
+            //             let secondResponse = data2[0];
+            //             console.log(modalTravelWarning, secondResponse);
+            //             let modalBodyText = "";
+            //             for(let i=0; i < secondResponse.length; i++) {
+            //                 modalBodyText += "Date: " + data[i].date + " " + data[i]["title"] + " " + data[i]["description"] + "\n";
+            //             }
+            //             $("#modal-title").text(countryName);
+            //             $("#modal-body").text(modalTravelWarning + " " + modalBodyText);
+
+            //             $("#hidden-button").trigger('click');
+            // });
+            
+            $.get("https://floating-woodland-60212.herokuapp.com/level?country="+lower_id, function(dataTravel){
+                console.log(dataTravel);
+                return dataTravel;    
+            });
+
+            $.get("https://floating-woodland-60212.herokuapp.com/topheadlines?country="+lower_id+"&limit=2", function(data){
                 console.log(data);
-                let modalBodyText = ""
+                let modalBodyText = "";
                 for(let i=0; i < data.length; i++) {
-                    modalBodyText += data[i].date + " " + data[i]["title"] + " " + data[i]["description"] + "\n";
+                    modalBodyText += "Date: " + data[i].date + " " + data[i]["title"] + " " + data[i]["description"] + "\n";
                 }
+                let modalTravelWarning = dataTravel;
                 $("#modal-title").text(countryName);
-                $("#modal-body").text(modalBodyText);
+                $("#modal-body").text(modalTravelWarning + " " + modalBodyText);
 
                 $("#hidden-button").trigger('click');
                 
             });
-            //console.log(countries_object[this.name]);
 
         });
 
