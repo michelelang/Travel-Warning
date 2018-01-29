@@ -25,10 +25,10 @@ def country_info(country):
         return country_info.fetchone()
 
 
-def insert_articles(cursor, country):
+def insert_articles(cursor, country, limit):
     result = newsapi.get_top_headlines(country=country, category='general')
     articles = result['articles']
-    for i in range(20):
+    for i in range(limit):
         article = articles[i]
         cursor.execute("INSERT INTO articles VALUES (?,?,?,?,?,?,?)",
                        (translator.translate(article['title']).text,
@@ -48,10 +48,10 @@ def top_n_articles(country, limit):
         rows = cursor_result.fetchall()
 
         if len(rows) == 0:
-            insert_articles(cursor, country)
+            insert_articles(cursor, country, limit)
         elif time.time() - int(rows[0][5]) > REFRESH_DELTA * 60:
             cursor.execute("DELETE FROM articles WHERE country_code = \'%s\'" %(country, ))
-            insert_articles(cursor, country)
+            insert_articles(cursor, country, limit)
 
         to_retrieve = cursor.execute("SELECT * FROM articles WHERE country_code = \'%s\' LIMIT %i" %(country, limit, ))
         return to_retrieve.fetchall()
