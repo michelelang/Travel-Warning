@@ -125,19 +125,35 @@ countries_object = {'Canada': 'CA', 'Sao Tome and Principe': 'ST', 'Venezuela, B
             let countryName = this.name;
             var lower_id = (countries_object[this.name]).toLowerCase();
             // let result;
-            $.get("https://floating-woodland-60212.herokuapp.com/topheadlines?country="+lower_id+"&limit=5", function(data){
+            let dataTravel;
+            $.get("https://floating-woodland-60212.herokuapp.com/level?country="+lower_id, function(dataTravel){
+                console.log(dataTravel);
+                return dataTravel;
+                // let modalTravelText = ""
+                // for(let i=0; i < dataTravel.length; i++) {
+                //     modalTravelText += dataTravel[i] + "\n";
+                // }
+                // $("#modal-title").text(countryName);
+                // $("#modal-body").text(modalBodyText);
+
+                // $("#hidden-button").trigger('click');
+                
+            });
+
+
+            $.get("https://floating-woodland-60212.herokuapp.com/topheadlines?country="+lower_id+"&limit=2", function(data){
                 console.log(data);
                 let modalBodyText = ""
                 for(let i=0; i < data.length; i++) {
-                    modalBodyText += data[i].date + " " + data[i]["title"] + " " + data[i]["description"] + "\n";
+                    modalBodyText += "Date: " + data[i].date + " " + data[i]["title"] + " " + data[i]["description"] + "\n";
                 }
+                let modalTravelWarning = dataTravel;
                 $("#modal-title").text(countryName);
-                $("#modal-body").text(modalBodyText);
+                $("#modal-body").text(modalTravelWarning + " " + modalBodyText);
 
                 $("#hidden-button").trigger('click');
                 
             });
-            //console.log(countries_object[this.name]);
 
         });
 
